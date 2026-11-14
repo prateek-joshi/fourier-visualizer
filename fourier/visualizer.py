@@ -30,15 +30,15 @@ class FourierTransformScene(Scene):
     RUN_TIME = 20
 
     def construct(self):
-        fm = FourierMath(self.SIGNAL_FREQS)
+        fm = FourierMath(self.SIGNAL_FREQS, amplitude=1.5)
 
         # Precompute the center-of-mass curve
         grid = np.arange(0.01, self.MAX_FREQ + 1e-9, self.STEP)
         com_vals = np.array([abs(fm.center_of_mass(f)) for f in grid])
 
         left = Axes(
-            x_range=[-4, 4, 1], y_range=[-4, 4, 1],
-            x_length=5, y_length=5,
+            x_range=[-5, 5, 1], y_range=[-5, 5, 1],
+            x_length=6, y_length=6,
             axis_config={"include_ticks": False, "stroke_opacity": 0.5},
             tips=False,
         ).to_edge(LEFT, buff=0.7).shift(DOWN * 0.3)
